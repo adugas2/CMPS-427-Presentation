@@ -213,8 +213,6 @@ public class SteeringControls : MonoBehaviour
         // Exted out 2 rays from sides
         Ray leftRay = new Ray(transform.position + transform.right * (-transform.localScale.x / 2), velocity.normalized);
         Ray rightRay = new Ray(transform.position + transform.right * (transform.localScale.x / 2), velocity.normalized);
-        /*Debug.DrawRay(leftRay.origin, leftRay.direction * sightDistance, Color.magenta);
-        Debug.DrawRay(rightRay.origin, rightRay.direction * sightDistance, Color.magenta);*/
         RaycastHit hit;
 
         // If the left one hits, steer away from the left
@@ -243,37 +241,5 @@ public class SteeringControls : MonoBehaviour
             }
         }
 
-
-        // Extend out 2 rays from the sides up until our sight ends
-        //Ray leftRay = new Ray(transform.position + transform.right * (-transform.localScale.x / 2), velocity.normalized);
-        //Ray rightRay = new Ray(transform.position + transform.right * (transform.localScale.x / 2), velocity.normalized);
-        //Debug.DrawRay(leftRay.origin, leftRay.direction * sightDistance, Color.magenta);
-        //Debug.DrawRay(rightRay.origin, rightRay.direction * sightDistance, Color.magenta);
-
-        //RaycastHit leftHit, rightHit;
-        //if (Physics.Raycast(leftRay, out leftHit, sightDistance) | Physics.Raycast(rightRay, out rightHit, sightDistance)) {
-        //    if (seenObstacles.Contains(leftHit.transform) || seenObstacles.Contains(rightHit.transform)) {
-        //        Transform ob = (leftHit.transform ? leftHit.transform : rightHit.transform);
-        //        // Now I know I'm about to collide with an obstacle. Now should I steer left or right?
-        //        // Depends on the sign of the angle, which we can get from dot prod
-        //        float signedAngle = Vector3.SignedAngle(ob.position - transform.position, velocity, Vector3.up);
-
-        //            steeringForce += velocity - ob.position;
-        //            acceleration += steeringForce;
-        //    }
-        //}
-
-        //Ray ray = new Ray(transform.position, velocity.normalized);
-        //Debug.DrawRay(ray.origin, ray.direction * sightDistance, Color.magenta);
-        //RaycastHit hit;
-        //if (Physics.Raycast(ray, out hit, sightDistance)) {
-        //    if (seenObstacles.Contains(hit.transform)) {
-        //        // Direction from center of obstacle to our sight vector
-        //        Vector3 of = ((transform.position + velocity.normalized * sightDistance) - hit.transform.position) * maxObstacleForce;
-        //        Debug.DrawRay(hit.transform.position, of, Color.cyan);
-        //        steeringForce += of;
-        //        acceleration += of;
-        //    }
-        //}
     }
 }
