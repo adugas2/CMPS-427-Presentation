@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SteeringControls : MonoBehaviour
 {
@@ -132,6 +133,7 @@ public class SteeringControls : MonoBehaviour
     private Vector3 ArriveAtTargetPos(Vector3 targetPos)
     {
         desiredVelocity = (targetPos - transform.position).normalized * maxSpeed;
+        Debug.DrawRay(transform.position, (targetPos - transform.position).normalized * maxSpeed);
 
         float dist = Vector3.Distance(targetPos, transform.position);
         if (dist < arrivalDistance) desiredVelocity *= (dist / arrivalDistance);
@@ -211,8 +213,8 @@ public class SteeringControls : MonoBehaviour
         // Exted out 2 rays from sides
         Ray leftRay = new Ray(transform.position + transform.right * (-transform.localScale.x / 2), velocity.normalized);
         Ray rightRay = new Ray(transform.position + transform.right * (transform.localScale.x / 2), velocity.normalized);
-        Debug.DrawRay(leftRay.origin, leftRay.direction * sightDistance, Color.magenta);
-        Debug.DrawRay(rightRay.origin, rightRay.direction * sightDistance, Color.magenta);
+        /*Debug.DrawRay(leftRay.origin, leftRay.direction * sightDistance, Color.magenta);
+        Debug.DrawRay(rightRay.origin, rightRay.direction * sightDistance, Color.magenta);*/
         RaycastHit hit;
 
         // If the left one hits, steer away from the left
